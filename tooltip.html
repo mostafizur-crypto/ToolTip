@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Tooltip</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: aliceblue;
+        color: tomato;
+        font-family: sans-serif;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 150px 0 0;
+      }
+      .tooltip {
+        cursor: grab;
+        position: relative;
+      }
+      .tooltip::after,
+      .tooltip::before {
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translate(0, -50%);
+        margin-right: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s linear;
+      }
+      .tooltip:hover::after,
+      .tooltip:hover::before {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .tooltip::after {
+        content: attr(data-tooltip);
+        background-color: gray;
+        color: whitesmoke;
+        font-size: 0.3em;
+        font-weight: normal;
+        padding: 10px;
+        border-radius: 9px;
+      }
+      .tooltip::before {
+        contain: "";
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 8px solid rgb(44, 5, 5);
+        border-bottom: 5px solid transparent;
+        margin-right: 7px;
+      }
+      /* .tooltip::before {
+
+        }
+        .box{
+            contain: "";
+          width: 0;
+          height: 0;
+          border-top: 50px solid transparent;
+          border-left: 80px solid rgb(44, 5, 5);
+          border-bottom: 50px solid transparent;
+          margin-right: 7px;
+        } */
+    </style>
+  </head>
+  <body>
+    <p><abbr data-tooltip="Mostafizur Rahman" class="tooltip">Badhon</abbr></p>
+    <div class="box"></div>
+  </body>
+</html>
